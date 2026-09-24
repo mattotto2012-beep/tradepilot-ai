@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TradePilot AI</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,sans-serif;background:#080b12;color:#eef2f7}
+.app{display:flex;min-height:100vh}.side{width:235px;background:#0d111a;border-right:1px solid #202735;padding:24px 14px;position:fixed;inset:0 auto 0 0}
+.logo{font-size:22px;font-weight:800;padding:8px 12px 28px}.logo span{color:#57d39b}
+.nav button{width:100%;background:none;border:0;color:#9ba5b5;text-align:left;padding:13px 14px;border-radius:10px;font-size:14px;margin:2px 0;cursor:pointer}.nav button.active,.nav button:hover{background:#171d28;color:#fff}
+.main{margin-left:235px;width:calc(100% - 235px);padding:28px;max-width:1500px}.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.title{font-size:27px;font-weight:750}.sub{color:#8e99aa;font-size:13px;margin-top:4px}
+.status{border:1px solid #294637;background:#10231a;color:#67dda4;padding:9px 13px;border-radius:20px;font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.card{background:#10151f;border:1px solid #202735;border-radius:14px;padding:18px}.label{color:#8994a5;font-size:12px}.value{font-size:25px;font-weight:750;margin-top:8px}.green{color:#61d99e}.red{color:#ff7883}
+.panel{background:#10151f;border:1px solid #202735;border-radius:14px;padding:20px;margin-top:18px}.panel h2{font-size:16px;margin:0 0 16px}.layout{display:grid;grid-template-columns:1.5fr 1fr;gap:18px}
+.chart{height:300px;position:relative;overflow:hidden;background:linear-gradient(180deg,#111722,#0e131c);border-radius:10px}.chart svg{width:100%;height:100%}.pill{display:inline-block;padding:5px 9px;border-radius:8px;background:#18202d;color:#aab4c5;font-size:11px;margin-right:6px}
+button.primary{background:#4ed596;border:0;color:#06110b;padding:11px 16px;border-radius:9px;font-weight:700;cursor:pointer}button.secondary{background:#1a212d;color:#dce3ec;border:1px solid #2a3343;padding:10px 14px;border-radius:9px;cursor:pointer}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #202735}.row:last-child{border:0}.muted{color:#8994a5;font-size:12px}.trade{font-size:13px}.tag{font-size:10px;padding:4px 7px;border-radius:6px;background:#153425;color:#65dda0}
+.page{display:none}.page.active{display:block}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:14px}.connect{padding:20px;border:1px solid #252e3d;background:#121823;border-radius:12px}.connect h3{margin:0 0 7px}.connect p{color:#8994a5;font-size:12px;line-height:1.5}.cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.trader{min-height:170px}.avatar{width:40px;height:40px;border-radius:50%;background:#293445;display:grid;place-items:center;font-weight:700}.smallbtn{font-size:12px;padding:7px 10px}
+@media(max-width:800px){.side{width:70px}.logo{font-size:0}.logo span{font-size:20px}.nav button{font-size:0;text-align:center}.nav button:first-letter{font-size:18px}.main{margin-left:70px;width:calc(100% - 70px);padding:18px}.grid,.cards3,.layout,.formgrid{grid-template-columns:1fr 1fr}.grid .card:last-child{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+<aside class="side">
+<div class="logo">Trade<span>Pilot</span> AI</div>
+<div class="nav">
+<button class="active" data-page="dashboard">▣ &nbsp; Dashboard</button>
+<button data-page="ai">◈ &nbsp; AI Trader</button>
+<button data-page="markets">⌁ &nbsp; Markets</button>
+<button data-page="traders">♙ &nbsp; Follow Traders</button>
+<button data-page="connections">↔ &nbsp; Connections</button>
+<button data-page="settings">⚙ &nbsp; Settings</button>
+</div>
+</aside>
+
+<main class="main">
+<section id="dashboard" class="page active">
+<div class="top"><div><div class="title">Dashboard</div><div class="sub">Your AI trading command centre</div></div><div class="status">● Demo mode active</div></div>
+<div class="grid">
+<div class="card"><div class="label">Demo Balance</div><div class="value">$10,000.00</div></div>
+<div class="card"><div class="label">Today's P/L</div><div class="value green">+$184.20</div></div>
+<div class="card"><div class="label">Open Trades</div><div class="value">2</div></div>
+<div class="card"><div class="label">AI Confidence</div><div class="value">87%</div></div>
+</div>
+<div class="layout">
+<div class="panel"><h2>Equity Curve <span class="pill">30D</span></h2><div class="chart"><svg viewBox="0 0 800 300" preserveAspectRatio="none"><path d="M0 240 C80 230 100 245 160 205 S250 225 300 175 S380 190 430 135 S510 160 555 105 S640 130 690 75 S760 90 800 45" fill="none" stroke="#61d99e" stroke-width="4"/><path d="M0 240 C80 230 100 245 160 205 S250 225 300 175 S380 190 430 135 S510 160 555 105 S640 130 690 75 S760 90 800 45 L800 300 L0 300Z" opacity=".08"/></svg></div></div>
+<div class="panel"><h2>AI Activity</h2><div class="row"><div><b>EURUSD</b><div class="muted">Trend setup detected</div></div><span class="tag">WATCHING</span></div><div class="row"><div><b>XAUUSD</b><div class="muted">Risk/reward 1:2.4</div></div><span class="tag">READY</span></div><div class="row"><div><b>BTCUSD</b><div class="muted">No setup</div></div><span class="pill">WAIT</span></div></div>
+</div>
+<div class="panel"><h2>Open Positions</h2><div class="row"><div class="trade"><b>EURUSD</b><div class="muted">BUY · 0.10 lots · SL 1.1680 · TP 1.1760</div></div><span class="green">+$72.40</span></div><div class="row"><div class="trade"><b>XAUUSD</b><div class="muted">BUY · 0.02 lots · SL 3,720 · TP 3,760</div></div><span class="green">+$111.80</span></div></div>
+</section>
+
+<section id="ai" class="page">
+<div class="top"><div><div class="title">AI Trader</div><div class="sub">Analyse first. Execute only with your chosen permission.</div></div><button class="primary" onclick="alert('Demo scan started. No real orders are sent.')">Run Market Scan</button></div>
+<div class="panel"><h2>Trading Permission</h2><div class="formgrid"><div class="connect"><b>Demo Auto-Trade</b><p>Allow the AI to place simulated trades automatically. Recommended for testing strategies before live trading.</p><button class="primary">Enable Demo</button></div><div class="connect"><b>Manual Approval</b><p>The AI prepares each setup, but you approve every order before execution.</p><button class="secondary">Use Manual Approval</button></div></div></div>
+<div class="panel"><h2>Latest AI Analysis</h2><div class="row"><div><b>EURUSD · BUY setup</b><div class="muted">Structure: bullish · Entry: 1.1720 · SL: 1.1680 · TP: 1.1800</div></div><span class="tag">87% confidence</span></div><div class="row"><div><b>XAUUSD · WATCH</b><div class="muted">Waiting for confirmation near support.</div></div><span class="pill">WAIT</span></div></div>
+</section>
+
+<section id="markets" class="page"><div class="top"><div><div class="title">Markets</div><div class="sub">Demo market watchlist</div></div></div><div class="cards3">
+<div class="card"><span class="pill">FOREX</span><h3>EURUSD</h3><div class="value">1.1724</div><div class="green">+0.42%</div></div>
+<div class="card"><span class="pill">GOLD</span><h3>XAUUSD</h3><div class="value">3,742.80</div><div class="green">+0.71%</div></div>
+<div class="card"><span class="pill">CRYPTO</span><h3>BTCUSD</h3><div class="value">112,480</div><div class="red">-0.18%</div></div>
+</div></section>
+
+<section id="traders" class="page"><div class="top"><div><div class="title">Follow Traders</div><div class="sub">Follow public trade updates and receive alerts.</div></div></div><div class="cards3">
+<div class="panel trader"><div class="avatar">AK</div><h3>Alex K.</h3><div class="muted">Forex · Public trade feed</div><br><button class="primary smallbtn" onclick="this.textContent='Following ✓'">Follow</button></div>
+<div class="panel trader"><div class="avatar">JM</div><h3>Jordan M.</h3><div class="muted">Indices · Public trade feed</div><br><button class="primary smallbtn" onclick="this.textContent='Following ✓'">Follow</button></div>
+<div class="panel trader"><div class="avatar">TS</div><h3>Taylor S.</h3><div class="muted">Gold · Public trade feed</div><br><button class="primary smallbtn" onclick="this.textContent='Following ✓'">Follow</button></div>
+</div></section>
+
+<section id="connections" class="page"><div class="top"><div><div class="title">Connections</div><div class="sub">Connect through official broker/platform authentication. Never share passwords with TradePilot.</div></div></div><div class="cards3">
+<div class="connect"><h3>MetaTrader 5</h3><p>Connect a supported demo account using a secure integration.</p><button class="primary">Connect MT5</button></div>
+<div class="connect"><h3>TradingView</h3><p>Use alerts/webhooks or supported integrations to send signals into the app.</p><button class="primary">Connect TradingView</button></div>
+<div class="connect"><h3>TradeLocker</h3><p>Connect using the platform's supported authentication/integration methods.</p><button class="primary">Connect TradeLocker</button></div>
+</div></section>
+
+<section id="settings" class="page"><div class="top"><div><div class="title">Settings</div><div class="sub">Risk and account controls</div></div></div><div class="panel"><h2>Safety Controls</h2><div class="row"><span>Demo mode</span><span class="tag">ON</span></div><div class="row"><span>Maximum risk per trade</span><b>1%</b></div><div class="row"><span>Require approval for live trades</span><span class="tag">ON</span></div><div class="row"><span>Daily loss limit</span><b>2%</b></div></div></section>
+</main></div>
+<script>
+document.querySelectorAll('.nav button').forEach(b=>b.onclick=()=>{
+ document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('active'));b.classList.add('active');
+ document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+ document.getElementById(b.dataset.page).classList.add('active');
+});
+</script>
+</body></html>
